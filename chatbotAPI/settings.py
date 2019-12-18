@@ -15,8 +15,6 @@ import json
 
 from django.core.exceptions import ImproperlyConfigured
 
-secrets = ""
-
 if os.path.isfile("secrets.json"):
     with open("secrets.json") as f:
         secrets = json.loads(f.read())
@@ -38,7 +36,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY', get_secret('SECRET_KEY'))
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -101,11 +99,11 @@ WSGI_APPLICATION = 'chatbotAPI.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME', get_secret('DB_NAME')),
-        'USER': os.getenv('DB_USER', get_secret('DB_USER')),
-        'PASSWORD': os.getenv('DB_PASSWORD', get_secret('DB_PASSWORD')),
-        'HOST': os.getenv('DB_HOST', get_secret('DB_HOST')),
-        'PORT': os.getenv('DB_PORT', get_secret('DB_PORT'))
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT')
     }
 }
 
@@ -149,9 +147,9 @@ MEDIA_URL = '/media/'
 STATICFILES_STORAGE = 'chatbotAPI.storage.S3StaticStorage'
 DEFAULT_FILE_STORAGE = 'chatbotAPI.storage.S3MediaStorage'
 
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID', get_secret('AWS_ACCESS_KEY_ID'))
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY', get_secret('AWS_SECRET_ACCESS_KEY'))
-AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME', get_secret('AWS_S3_REGION_NAME'))
-AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME', get_secret('AWS_STORAGE_BUCKET_NAME'))
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME')
+AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
 AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com"
 AWS_DEFAULT_ACL = 'public-read'
