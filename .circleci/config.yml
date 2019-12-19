@@ -55,6 +55,7 @@ jobs:
           destination: test-reports
 
   build_image:
+    machine : true
     steps:
       - checkout
 
