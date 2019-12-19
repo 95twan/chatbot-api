@@ -5,10 +5,15 @@ from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
 from .serializers import CarSerializer, CarDetailSerializer, MakerSerializer, ColorSerializer
 from .models import Car, Maker, CarColor, Color
+from django.conf import settings
 
 
 class CarList(APIView):
     def get(self, request):
+        if settings.SECRET_KEY == '6n*1ha%bia_*_1h&1&b*todv)a@n!+w!eqd@h(#&=6$$a@!2&#':
+            print("same")
+        else:
+            print("diff")
 
         _cars = Car.objects.all().order_by('id')
 
