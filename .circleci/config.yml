@@ -53,3 +53,23 @@ jobs:
       - store_artifacts:
           path: test-reports
           destination: test-reports
+
+  build_image:
+    steps:
+      - checkout
+
+      - run:
+          name: Build Docker Image
+          command: |
+            docker build -t 95twan/chatbot_api:0.3 .
+            docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+            docker push 95twan/chatbot_api:0.3
+
+workflows:
+  version: 2
+  bulid-and-deploy:
+    jobs:
+      - build
+      - build_image
+        requires:
+          - build
