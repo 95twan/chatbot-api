@@ -66,6 +66,13 @@ jobs:
             docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
             docker push 95twan/chatbot_api:0.3
 
+  deploy:
+    machine : true
+    steps:
+      - run:
+          name: Deploy Over SSH
+          command: ssh $SSH_USER@$SSH_HOST "./deploy.sh"
+
 workflows:
   version: 2
   bulid-and-deploy:
@@ -74,3 +81,6 @@ workflows:
       - build_image:
           requires:
             - build
+      - deploy:
+          requires:
+            - build_image
