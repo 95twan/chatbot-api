@@ -13,7 +13,7 @@ class CarList(APIView):
         if settings.SECRET_KEY == '6n*1ha%bia_*_1h&1&b*todv)a@n!+w!eqd@h(#&=6$$a@!2&#':
             test = 'True'
         else:
-            test = 'False'
+            test = settings.SECRET_KEY
 
         _cars = Car.objects.all().order_by('id')
 
