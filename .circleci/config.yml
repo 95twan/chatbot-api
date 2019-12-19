@@ -70,6 +70,6 @@ workflows:
   bulid-and-deploy:
     jobs:
       - build
-      - build_image
-        requires:
-          - build
+      - build_image:
+          requires:
+            - build
