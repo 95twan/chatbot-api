@@ -82,6 +82,6 @@ workflows:
       - build_image:
           requires:
             - build
-      - deploy
+      - deploy:
           requires:
             - build_image
