@@ -24,6 +24,8 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 if SECRET_KEY == '6n*1ha%bia_*_1h&1&b*todv)a@n!+w!eqd@h(#&=6$$a@!2&#':
     print("same")
+else:
+    print("diff")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
