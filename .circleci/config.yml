@@ -72,7 +72,7 @@ jobs:
     steps:
       - run:
           name: Deploy Over SSH
-          command: ssh $SSH_USER@$SSH_HOST "sudo ./deploy.sh"
+          command: ssh $SSH_USER@$SSH_HOST "./deploy.sh"
 
 workflows:
   version: 2
