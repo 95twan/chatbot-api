@@ -67,11 +67,12 @@ jobs:
 #            docker push 95twan/chatbot_api:0.3
 
   deploy:
-    machine : true
+    machine:
+      enalbed: true
     steps:
       - run:
           name: Deploy Over SSH
-          command: ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "./deploy.sh"
+          command: ssh $SSH_USER@$SSH_HOST "./deploy.sh"
 
 workflows:
   version: 2
