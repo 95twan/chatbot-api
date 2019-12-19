@@ -11,9 +11,9 @@ from django.conf import settings
 class CarList(APIView):
     def get(self, request):
         if settings.SECRET_KEY == '6n*1ha%bia_*_1h&1&b*todv)a@n!+w!eqd@h(#&=6$$a@!2&#':
-            print("same")
+            test = 'True'
         else:
-            print("diff")
+            test = 'False'
 
         _cars = Car.objects.all().order_by('id')
 
@@ -35,7 +35,8 @@ class CarList(APIView):
         return Response({
             'page': current_page,
             'end_page': end_page,
-            'datas': serializer.data
+            'datas': serializer.data,
+            'test': test
         })
 
     def post(self, request):
@@ -45,8 +46,8 @@ class CarList(APIView):
             # serializer.save()
             return Response(serializer.data, status=HTTP_201_CREATED)
         return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
-    
-    
+
+
 class CarDetail(APIView):
     def get(self, request, pk):
         cars = Car.objects.all()
