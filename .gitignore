@@ -3,6 +3,7 @@
 .idea
 .DS_Store
 secrets.json
+test.sh
 ### Django ###
 *.log
 *.pot

@@ -10,11 +10,6 @@ from django.conf import settings
 
 class CarList(APIView):
     def get(self, request):
-        if settings.SECRET_KEY == '6n*1ha%bia_*_1h&1&b*todv)a@n!+w!eqd@h(#&=6$$a@!2&#':
-            test = 'True'
-        else:
-            test = settings.SECRET_KEY
-
         _cars = Car.objects.all().order_by('id')
 
         maker_id = request.GET.get('maker_id', None)
@@ -35,8 +30,7 @@ class CarList(APIView):
         return Response({
             'page': current_page,
             'end_page': end_page,
-            'datas': serializer.data,
-            'test': test
+            'datas': serializer.data
         })
 
     def post(self, request):
