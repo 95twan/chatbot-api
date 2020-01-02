@@ -2,7 +2,6 @@
 # Edit at https://www.gitignore.io/?templates=python,django,virtualenv,visualstudiocode
 .idea
 .DS_Store
-secrets.json
 test.sh
 ### Django ###
 *.log
