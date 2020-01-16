@@ -25,7 +25,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['54.180.81.200', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['54.180.81.200', '127.0.0.1', 'localhost', '192.168.0.6', '1.240.184.86']
 
 
 # Application definition
@@ -44,6 +44,7 @@ INSTALLED_APPS += [
     'storages',
     'carAPI',
     'messageAPI',
+    'user'
 ]
 
 MIDDLEWARE = [
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'chatbotAPI.middleware.check_user_agent'
 ]
 
 ROOT_URLCONF = 'chatbotAPI.urls'

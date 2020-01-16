@@ -1,5 +1,6 @@
 .circleci/*
 .gitignore
 test.sh
+test2.sh
 .DS_Store
 .idea

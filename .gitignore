@@ -3,6 +3,7 @@
 .idea
 .DS_Store
 test.sh
+test2.sh
 ### Django ###
 *.log
 *.pot
